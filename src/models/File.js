@@ -22,7 +22,8 @@ const File = new mongoose.Schema({
 
 //criação do campo virtual -> campo q n existe na tabela, mas existe na codificação
 File.virtual('url').get(function() { //naõ pode ser arrow function pois é necessário acesso ao this
-    return `http://localhost:3333/files/${encodeURIComponent(this.path)}`;
+    const url = process.env.URL || 'http://localhost:3333'
+    return `${url}/files/${encodeURIComponent(this.path)}`;
 })
 
 module.exports = mongoose.model('File', File);

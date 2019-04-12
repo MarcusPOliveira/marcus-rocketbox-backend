@@ -35,4 +35,4 @@ app.use('/files', express.static(path.resolve(__dirname, '..', 'temp')));
 
 app.use(require('./routes')); //caminho do arquivo de Rotas
 
-server.listen(3333); //aplicação irá rodar na porta 3333
+server.listen(process.env.PORT || 3333); //aplicação irá rodar em qualquer porta selecionada pelo Heroku ou na 3333 em ambiente de desenvolvimento
